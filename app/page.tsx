@@ -1,12 +1,19 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const [roomId, setRoomId] = useState("");
+  const router = useRouter();
 
   const handleJoin = () => {
-    alert(`入室する部屋番号：${roomId}`);
+    if (!roomId.trim()) {
+      alert("部屋番号を入力してください");
+      return;
+    }
+
+    router.push(`/room/${roomId}`);
   };
 
   return (
@@ -25,7 +32,7 @@ export default function Home() {
           padding: "24px",
           background: "white",
           borderRadius: "12px",
-          boxShadow: "0 0 10px rgba(0,0,0,0.1)",
+          boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
         }}
       >
         <h1>🎤 Voice Chat</h1>
