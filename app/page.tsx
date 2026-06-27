@@ -1,4 +1,14 @@
+"use client";
+
+import { useState } from "react";
+
 export default function Home() {
+  const [roomId, setRoomId] = useState("");
+
+  const handleJoin = () => {
+    alert(`入室する部屋番号：${roomId}`);
+  };
+
   return (
     <main
       style={{
@@ -25,6 +35,8 @@ export default function Home() {
         <input
           type="text"
           placeholder="12345"
+          value={roomId}
+          onChange={(e) => setRoomId(e.target.value)}
           style={{
             width: "100%",
             padding: "10px",
@@ -33,6 +45,7 @@ export default function Home() {
         />
 
         <button
+          onClick={handleJoin}
           style={{
             width: "100%",
             padding: "10px",
